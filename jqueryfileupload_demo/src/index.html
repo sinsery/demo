@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.ui.widget.js"></script>
+	<script src="js/jquery.iframe-transport.js"></script>
+	<script src="js/jquery.fileupload.js"></script>
+	<script src="js/jquery.xdr-transport.js"></script>
+</head>
+<body>
+<input id="fileupload" type="file" name="file1" data-url="handleupload.php" >
+<img id="show" src=""/>
+<script>
+$('#fileupload').fileupload({  
+    done: function (e, data) {  
+		$('#show').attr("src",data.result);
+    }  
+}); 
+</script>
+</body>
+</html>
