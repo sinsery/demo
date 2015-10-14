@@ -1,0 +1,6 @@
+{
+    "require": {
+         "sunra/php-simple-html-dom-parser": "*"
+	
+    }
+}
