@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.js"></script>
+</head>
+<body style="padding: 200px">
+    <div style="position: relative;">
+        <div id="dragBlock" style="position: absolute;top:10px;left:0;width: 300px;height: 100px;background-color: aquamarine">
+        </div>
+    </div>
+<script>
+    var $dragBlock = $("#dragBlock");
+    $dragBlock.bind('mousedown',function(){
+        $dragBlock.bind('mousemove',move);
+    });
+    $dragBlock.bind('mouseup',function(){
+        $dragBlock.unbind('mousemove',move);
+    });
+    var lastX = 0 ;
+    var lastY = 0;
+    function move(e){
+        var moveX = 0 ;
+        var moveY = 0;
+        if(lastX == 0 ){
+            lastX = e.pageX;
+        }else{
+            moveX = e.pageX - lastX;//计算偏移量
+            lastX = e.pageX;
+            $dragBlock.css("left",(moveX+$dragBlock[0].offsetLeft)+"px");
+        }
+        if(lastY == 0 ){
+            lastY = e.pageY;
+        }else{
+            moveY = e.pageY - lastY;//计算偏移量
+            lastY = e.pageY;
+            $dragBlock.css("top",(moveY+$dragBlock[0].offsetTop)+"px");
+        }
+    }
+</script>
+</body>
+</html>
