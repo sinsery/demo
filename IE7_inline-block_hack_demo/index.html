@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div style="width: 800px;height:900px;background-color: #333333;"><!-- 父容器 -->
+
+    <div style="display: inline-block;width: 200px;height:200px;background-color: red;vertical-align:top;*display:inline;*zoom:1;">
+        <div style="display: inline;height: 20px;width: 10px;background-color: #00625A">
+
+        </div>
+        <div style="display: inline;height: 20px;width: 10px;background-color: yellow">
+
+        </div>
+    </div><!-- no space --><div style="display: inline-block;width: 500px;height: 100px;background-color: blue;vertical-align:top;*display:inline;*zoom:1;">
+        <!-- IE7下无法识别inline-block 必须使用 *display:inline;*zoom:1; 来hack 而且位置必须固定不能错 -->
+        <!-- 注明 no space 的地方必须连续无空格 否则zoom:1会带来一个空白间距  -->
+    </div><!-- no space --><div style="display: inline-block;width: 100%;height: 100px;background-color: green;vertical-align:top;*display:inline;*zoom:1;">
+        <!-- 很遗憾 inline-block 如果设置宽度为100% 则宽度会是父容器的宽度 -->
+    </div>
+	
+</div>
+</body>
+</html>
