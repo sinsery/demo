@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .link {
+            display: inline-block;
+            position: relative;
+            color: #555;
+            border-bottom: none;
+            line-height: 1.2;
+            vertical-align: top;
+        }
+        .link::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition-duration: 0.2s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0s;
+        }
+        .link:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body>
+<h1 class="link">this is a title</h1>
+</body>
+</html>
