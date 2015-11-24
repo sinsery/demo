@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    // preload img with JQuery
+    $('<img />').attr('src', 'img/car.jpg');
+
+    // preload img with Native JS
+    var img1 = new Image();
+    img1.src =  'img/car.jpg';
+</script>
+
+<script>
+    // preloadImage primary demo with Array
+    function preLoadImages(arr) {
+        var newImages = [];
+        var arr = (typeof arr != "object") ? [arr] : arr;  //make sure the param always Array
+        for (var i = 0; i < arr.length; i++) {
+            newImages[i] = new Image();
+            newImages[i].src = arr[i];
+        }
+    }
+
+    // usage
+    preLoadImages(['img/car.jpg','img/car1.jpg']);
+
+</script>
+
+<script>
+    // preloadImage enhance with Callback function after image finish loading
+    function preLoadImagesEnhance(arr) {
+        var newimages = [], loadedimages = 0;
+        var postaction = function () {
+        }
+        var arr = (typeof arr != "object") ? [arr] : arr;
+
+        function imageloadpost() {
+            loadedimages++;
+            if (loadedimages == arr.length) {
+                postaction(newimages);
+            }
+        }
+
+        for (var i = 0; i < arr.length; i++) {
+            newimages[i] = new Image();
+            newimages[i].src = arr[i];
+            newimages[i].onload = function () {
+                imageloadpost();
+            }
+            newimages[i].onerror = function () {
+                imageloadpost();
+            }
+        }
+        return {
+            done: function (f) {
+                postaction = f || postaction;
+            }
+        }
+    }
+
+    // usage
+    preLoadImagesEnhance(['img/car.jpg']).done(function(){
+        alert("image load finish");
+    });
+</script>
+
+<script>
+    // put them in the window.onload and delay 1s is a good strategy
+    window.onload = function() {
+        setTimeout(function() {
+            // XHR to request a JS and a CSS
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'test.js');
+            xhr.send('');
+            xhr = new XMLHttpRequest();
+            xhr.open('GET', 'test.css');
+            xhr.send('');
+            // preload image
+            new Image().src = 'img/car.jpg';
+        }, 1000);
+    };
+</script>
+</body>
+</html>
+
