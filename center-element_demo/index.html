@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+// on the middle of the parent component
+// * a recommend way *  but support from IE8+ , say bye bye to IE7
+<div style="
+    position: relative;
+    width: 150px; height: 150px;
+    background-color: #aaaaaa;">
+    <div style="
+        position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+        width: 50px;height: 50px;
+        margin: auto;
+        background-color: #ffffff;
+        "></div>
+</div>
+
+
+// on the middle of the parent component
+// need to support 'transform' firstly , mobile also support
+<div style="
+    position: relative;
+    width: 150px; height: 150px;
+    background-color: #aaaaaa;">
+    <div style="
+        width: 50px; height: 50px;
+        position: absolute; left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        "></div>
+</div>
+
+// on the middle of the parent component
+// need to confirm the width and height firstly so that can calculate the half of them as the margin
+<div style="
+    position: relative;
+    width: 150px; height: 150px;
+    background-color: #aaaaaa;">
+    <div style="
+        width: 50px; height: 50px;
+        position: absolute; left: 50%; top: 50%;
+        margin-top: -25px;
+        margin-left: -25px;
+        background-color: #ffffff;
+        "></div>
+</div>
+
+
+</body>
+</html>
+
